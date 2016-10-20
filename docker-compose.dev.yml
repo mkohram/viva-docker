@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  viva_ui:
+    entrypoint: /usr/src/app/entrypoint.sh
+    volumes_from:
+      - container:vivaui_sync:rw
+    ports:
+      - "4200:4200"
+      - "49152:49152"
+    command: ""
+
+volumes:
+  vivaui_sync:
+    external: true

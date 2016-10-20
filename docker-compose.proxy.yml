@@ -1,0 +1,22 @@
+version: '2'
+services:
+  viva_varkb:
+    build:
+      args:
+        HTTPS_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+        HTTP_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+  viva_publicapi:
+    build:
+      args:
+        HTTPS_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+        HTTP_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+  viva_metadata:
+    build:
+      args:
+        HTTPS_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+        HTTP_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+  viva_ui:
+    build:
+      args:
+        HTTPS_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80
+        HTTP_PROXY: http://user:pass@bmiproxyp.chmcres.cchmc.org:80

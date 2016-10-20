@@ -1,0 +1,69 @@
+version: '2'
+services:
+  viva_varkb:
+    user: srv-viva-web
+    build:
+      context: ./viva_varkb/
+    volumes_from:
+      - share
+      - data
+    expose:
+      - "8080"
+    command: uwsgi --ini /usr/src/app/uwsgi/uwsgi.ini
+
+  viva_publicapi:
+    user: srv-viva-web
+    build:
+      context: ./viva_publicapi/
+    volumes_from:
+      - data
+      - share
+    expose:
+      - "3031"
+    links:
+      - viva_varkb
+      - viva_metadata
+    command: uwsgi --ini /usr/src/app/public_api/uwsgi/uwsgi.ini
+
+  viva_metadata:
+    user: srv-viva-web
+    build:
+      context: ./viva_metadata/
+    expose:
+      - "8080"
+    volumes_from:
+      - share
+    command: uwsgi --ini /usr/src/app/uwsgi/uwsgi.ini
+
+  viva_ui:
+    build:
+      context: ./viva_ui/
+    volumes:
+      - /nginx/ui
+    volumes_from:
+      - share
+    command:
+      /usr/src/app/node_modules/.bin/ember build --output-path /nginx/ui -e development-docker
+
+  nginx:
+    restart: always
+    build:
+      context: ./nginx/
+    ports:
+      - "8080:8080"
+    volumes_from:
+      - share
+      - viva_ui
+    links:
+      - viva_publicapi
+
+  data:
+    build: ./data/
+    volumes:
+      - /tmp/viva_store:/viva_data
+
+  share:
+    user: srv-viva-web
+    build: ./data/
+    volumes:
+      - /viva_logs
