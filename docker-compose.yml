@@ -19,10 +19,11 @@ services:
       - data
       - share
     expose:
-      - "3031"
+      - "8080"
     links:
       - viva_varkb
       - viva_metadata
+      - viva-processing
     command: uwsgi --ini /usr/src/app/public_api/uwsgi/uwsgi.ini
 
   viva_metadata:
@@ -34,6 +35,16 @@ services:
     volumes_from:
       - share
     command: uwsgi --ini /usr/src/app/uwsgi/uwsgi.ini
+
+  viva-processing:
+    user: srv-viva-web
+    build:
+      context: ./viva-processing/
+    expose:
+      - "8080"
+    volumes_from:
+      - share
+    entrypoint: java -jar target/Viva_Processing_Comm.jar
 
   viva_ui:
     build:
