@@ -1,0 +1,21 @@
+version: '2'
+services:
+  postgres:
+    build:
+      context: ./postgres/
+    volumes:
+      - ./fixtures:/fixture_data
+    expose:
+      - "5432"
+
+  viva_varkb:
+    links:
+      - postgres
+    depends_on:
+      - postgres
+
+  viva_metadata:
+    links:
+      - postgres
+    depends_on:
+      - postgres
