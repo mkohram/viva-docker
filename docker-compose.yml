@@ -9,7 +9,7 @@ services:
       - data
     expose:
       - "8080"
-    command: uwsgi --ini /usr/src/app/uwsgi/uwsgi.ini
+    command: uwsgi --ini /usr/src/app/uwsgi/uwsgi_docker.ini
 
   viva_publicapi:
     user: srv-viva-web

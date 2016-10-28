@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  viva_varkb:
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./viva_varkb/:/usr/src/app
+    tmpfs:
+      - /viva_data
+      - /viva_logs/varkb
+    command: ./manage.py runserver 0.0.0.0:8000
