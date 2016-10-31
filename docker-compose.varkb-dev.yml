@@ -2,6 +2,7 @@ version: '2'
 
 services:
   viva_varkb:
+    user: root
     ports:
       - "8000:8000"
     volumes:
