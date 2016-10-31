@@ -4,6 +4,8 @@ services:
     user: srv-viva-web
     build:
       context: ./viva_varkb/
+    depends_on:
+      - share
     volumes_from:
       - share
       - data
@@ -24,7 +26,7 @@ services:
       - viva_varkb
       - viva_metadata
       - viva-processing
-    command: uwsgi --ini /usr/src/app/public_api/uwsgi/uwsgi.ini
+    command: uwsgi --ini /usr/src/app/public_api/uwsgi/uwsgi_docker.ini
 
   viva_metadata:
     user: srv-viva-web
@@ -71,7 +73,7 @@ services:
   data:
     build: ./data/
     volumes:
-      - /tmp/viva_store:/viva_data
+      - /viva_data
 
   share:
     user: srv-viva-web

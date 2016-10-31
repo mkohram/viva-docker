@@ -26,6 +26,6 @@ cd "$DIR"/viva_ui
 git checkout feature/dockerize
 
 rm -rf "$DIR"/viva-processing
-git clone https://$USER@stash.research.cchmc.org/scm/varkb/processing_communication.git "$DIR"/viva-processing
+git clone https://$USER@stash.research.cchmc.org/scm/varkb/processing-communication.git "$DIR"/viva-processing
 cd "$DIR"/viva-processing
 git checkout feature/dockerize
