@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-DEBUG=
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # fetch code for containers not in this git repo and do basic setup on each container
