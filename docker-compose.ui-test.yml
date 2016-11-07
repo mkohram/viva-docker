@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  viva_ui:
+    entrypoint: /usr/src/app/entrypoint-test.sh
+    command: ""

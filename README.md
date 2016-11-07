@@ -16,7 +16,10 @@
 * Install `git`, `docker-engine` and `docker-compose`
 * Run `prepare.sh` to clone appropriate repos.
 * Run `setup_dbs.sh` to setup the databases.
-* follow `viva_ui/README.md` instructions for dev with docker-sync
+* Follow `viva_ui/README.md` instructions for dev with docker-sync
+* Or for running tests you can run this command:
+    1. `docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.ui-test.yml run --rm viva_ui`
+
 
 ---------------------
 
