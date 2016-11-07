@@ -11,6 +11,16 @@
 * Run `docker-compose up --build`
 * The default configs should be enough to setup a running instance of VIVA on `http://localhost:8080` on the host machine
 
+
+# VIVA UI development
+* Install `git`, `docker-engine` and `docker-compose`
+* Run `prepare.sh` to clone appropriate repos.
+* Run `setup_dbs.sh` to setup the databases.
+* Follow `viva_ui/README.md` instructions for dev with docker-sync
+* Or for running tests you can run this command:
+    1. `docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.ui-test.yml run --rm viva_ui`
+
+
 ---------------------
 
 To install an independent instance for development:
